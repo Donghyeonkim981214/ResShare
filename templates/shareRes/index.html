@@ -1,31 +1,7 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
+{% extends "base.html" %}
 
-    <!-- Boot strap -->
-    <!-- 합쳐지고 최소화된 최신 CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-    <!-- 부가적인 테마 -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-    <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-
-    <style>
-        .container{
-            margin-top: 20px;
-        }
-        .jumbotron{
-            padding-top:15px;
-            padding-bottom:15px;
-        }
-        .content{
-            min-height: 60%;
-            margin: auto;
-        }
-        .row{
-            margin:0;
-            padding:0;
-        }
+{% block style %}
+<style>
         .subTitle{
             font-size:17px;
         }
@@ -134,18 +110,10 @@
         .inputContent{
             resize: none;
         }
+</style>
+{% endblock style %}
 
-
-        .panel-footer{
-            margin-top: 50px;
-            height: 10%;
-        }
-    </style>
-    <script
-        src="https://code.jquery.com/jquery-3.4.1.js"
-        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-        crossorigin="anonymous">
-    </script>
+{% block script %}
     <script>
         $(document).ready(function(){
             $('.restaurantListDiv>li').click(function(){
@@ -192,16 +160,13 @@
         }
 
     </script>
-    <title>맛집 공유 사이트</title>
-</head>
-<body>
-    <div class="container">
-        <div class="header">
-            <div class="jumbotron">
-                <h1>맛집 공유 사이트</h1>
-                <p>made by Django</p>
-            </div>
-        </div>
+{% endblock script %}
+
+{% block title %}{% endblock title %}
+
+{% block title_main %}{% endblock title_main %}
+
+{% block content %}
         <div class="content">
             <div class="row">
                 <form action="./sendEmail/send/" method="POST" onsubmit="return emailCheckForm();"> {% csrf_token %}
@@ -263,9 +228,4 @@
                 </form>
             </div>
         </div>
-        <div class="panel-footer">
-            실전예제로 배우는 Django. Project2-RestaurantShare
-        </div>
-    </div>
-</body>
-</html>
+{% endblock content %}

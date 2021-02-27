@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block style %}
+    <style>
+        .content{
+            min-height: 60%;
+            margin: auto;
+            text-align: center;
+        }
+    </style>
+{% endblock style %}
+
+{% block title %}{% endblock title %}
+
+{% block title_main %}{% endblock title_main %}
+
+{% block content %}
+        <div class="content">
+            <div class="resultDiv">
+                <h3>이메일 발송에 실패했어요 :'(</h3>
+                <p>아래 버튼을 누르시면 홈으로 돌아갈 수 있어요 :)</p>
+                <a href ="/" class="resAddBtn btn btn-info" role="button">홈으로</a>
+            </div>
+        </div>
+{% endblock content %}
