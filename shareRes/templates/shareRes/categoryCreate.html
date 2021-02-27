@@ -88,7 +88,6 @@
                         </div>
                     {% endif %}
                     {% endfor %}
-                    
                     {% for category in categories %}
                     {% if category.id != 3 %}
                     <form action="./delete" method="POST">{% csrf_token %}
