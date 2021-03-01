@@ -18,9 +18,3 @@ class ReadOnlyModelFormMixin(FormMixin):
         Called when form is submitted and form.is_valid()
         """
         return self.form_invalid(form)
-
-class Mixin(models.Model):
-    # TODO
-
-    class Meta:
-        abstract = True
