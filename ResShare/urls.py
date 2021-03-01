@@ -18,6 +18,6 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('shareRes.urls')),
+    path('', include('shareRes.urls', namespace="shareRes")),
     path('sendEmail/', include('sendEmail.urls')),
 ]

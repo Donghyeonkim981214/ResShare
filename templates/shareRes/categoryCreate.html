@@ -38,22 +38,22 @@
     </script>
 {% endblock script %}
 
-{% block title %}{% endblock title %}
+{% block title %}{{ title }}{% endblock title %}
 
-{% block title_main %}{% endblock title_main %}
+{% block title_main %}{{ title }}{% endblock title_main %}
 
 {% block content %}
         <div class="content">
                 <div class="inputDiv">
                     {% for category in categories %}
-                    {% if category.id == 3%}
+                    {% if category.category_name == '기본 그룹' %}
                         <div class="input-group">
                             <span class="input-group-addon" style="border:1px solid #ccc; border-radius: 4px;">{{ category.category_name }}</span>
                         </div>
                     {% endif %}
                     {% endfor %}
                     {% for category in categories %}
-                    {% if category.id != 3 %}
+                    {% if category.category_name != '기본 그룹' %}
                     <form action="./delete" method="POST">{% csrf_token %}
                         <div class="input-group">
                             <span class="input-group-addon" id="" style="border:1px solid #ccc; border-radius: 4px;">{{category.category_name}}</span>
@@ -64,10 +64,12 @@
                     {% endif %}
                     {% endfor %}
 
-                    <form action="./create" method="POST" onsubmit="return categoryAddCheckFrom();">{% csrf_token %}
+                    <form action="./" method="POST" onsubmit="return categoryAddCheckFrom();">{% csrf_token %}
                         <div class="input-group">
                             <input type="submit" class="resAddBtn btn btn-success" role="button" value="추가"/>
-                            <input id="categoryName" name="categoryName" type="text" class="form-control" placeholder="추가할 카테고리명을 입력하세요." style="width:650px; float:right; border-radius:4px;">
+                            {% for field in form %}
+                            {{field}}
+                            {% endfor %}
                         </div>
                     </form>
                     <a href ="/" class="resAddBtn btn btn-info" role="button">홈으로</a>
