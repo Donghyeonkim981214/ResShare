@@ -20,4 +20,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('shareRes.urls', namespace="shareRes")),
     path('sendEmail/', include('sendEmail.urls')),
+    path("users/", include("users.urls", namespace="users")),
 ]
