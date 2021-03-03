@@ -11,6 +11,9 @@ from . import mixins
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 
+from reviews import models as rev_models
+
+from django.db.models import Avg
 # Create your views here.
 """ def index(request):
     categories = Category.objects.all()
@@ -46,6 +49,16 @@ class restaurantDetailView(mixins.ReadOnlyModelFormMixin, UpdateView):
     def get_context_data(self, **kwargs):
         context = super(restaurantDetailView, self).get_context_data(**kwargs)
         context['title'] = "맛집 소개"
+        context['reviews'] = rev_models.Review.objects.filter(restaurant = self.object)
+        if self.request.user.is_authenticated:
+            try:
+                context['user_review'] = rev_models.Review.objects.filter(restaurant = self.object).get(created_by = self.request.user)
+            except rev_models.Review.DoesNotExist:
+                context['user_review'] = None
+        try:
+            context['avg_rate'] = rev_models.Review.objects.filter(restaurant = self.object).aggregate(Avg('rate'))
+        except rev_models.Review.DoesNotExist:
+            context['avg_rate'] = None
         return context
 
     

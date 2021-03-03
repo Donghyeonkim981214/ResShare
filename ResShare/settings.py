@@ -51,6 +51,7 @@ PROJECT_APPS =[
     'shareRes',
     'sendEmail',
     'users',
+    'reviews',
 ]
 INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS
 

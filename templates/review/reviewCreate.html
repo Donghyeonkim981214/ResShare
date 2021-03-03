@@ -27,21 +27,9 @@
 {% block script %}
     <script>
         function checkFrom(){
-            if ($('#resTitle').val().length <= 0){
-                alert("맛집 이름을 입력해주세요.")
+            if ($('#review').val().length <= 0){
+                alert("리뷰를 작성해주세요.")
                 $('#resTitle').focus()
-                return false
-            }else if($('#resLink').val().length <= 0){
-                alert("관련 링크를 입력해주세요.")
-                $('#resLink').focus()
-                return false
-            }else if($('#resContent').val().length <= 0){
-                alert("상세 내용을 입력해주세요.")
-                $('#resContent').focus()
-                return false
-            }else if($('#resLoc').val().length <= 0){
-                alert("장소 키워드를 입력해주세요.")
-                $('#resLoc').focus()
                 return false
             }else{
                 return true
@@ -50,13 +38,13 @@
     </script>
 {% endblock script %}
 
-{% block title %}{% endblock title %}
+{% block title %}{{ title }}{% endblock title %}
 
-{% block title_main %}{% endblock title_main %}
+{% block title_main %}{{ title }}{% endblock title_main %}
 
 {% block content %}
 <div class="content">
-    <form action="./" method="POST" onsubmit="return checkFrom();">{% csrf_token %}
+    <form action="{% url 'reviews:revCreate' res_id %}" method="POST" onsubmit="return checkFrom();">{% csrf_token %}
         {% for field in form %}
         <div class="input-group">
         <span class="input-group-addon" id="sizing-addon2">{{ field.label }}</span>
@@ -68,7 +56,7 @@
             {% endfor %}
         {% endif %}
         {% endfor %}
-        <input type="submit" class="resAddBtn btn btn-info" role="button" value="맛집 수정"/>
+        <input type="submit" class="resAddBtn btn btn-info" role="button" value="제출"/>
     </form>
 </div>
 {% endblock content %}
