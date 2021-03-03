@@ -21,4 +21,5 @@ urlpatterns = [
     path('', include('shareRes.urls', namespace="shareRes")),
     path('sendEmail/', include('sendEmail.urls')),
     path("users/", include("users.urls", namespace="users")),
+    path("reviews/", include("reviews.urls", namespace="reviews")),
 ]

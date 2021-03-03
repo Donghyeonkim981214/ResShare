@@ -52,5 +52,43 @@
                     <input type="submit" class="resAddBtn btn btn-danger" value="삭제하기">
                 </form>
             </div>
+            <hr>
+            <div class="reviewDiv">
+                <h2>Review</h2>
+                {% if avg_rate.rate__avg  is not None %}
+                    <h4>AvgRate: {{ avg_rate.rate__avg }}</h4>
+                {% else %}
+                    <h4>AvgRate: No reviews yet</h4>
+                {% endif %}
+                {% if user.is_authenticated %}
+                    {% if user_review is not None %}
+                        <h3>Your Review</h3>
+                        <span>Rate: {{user_review.rate}}</span>
+                        <span>PostedDay: {{user_review.postedDay}}</span>
+                        <h4>{{user_review.review}}</h4>
+                        <div>
+                            <form action="{% url 'reviews:revUpdate' user_review.id %}" method="GET">
+                                <input type="hidden" id="revId" name="revId" value="{{user_review.id}}"/>
+                                <input type="submit" class="resAddBtn btn btn-success" value="리뷰수정">
+                            </form>
+                            <form action="{% url 'reviews:revDelete' restaurant.id %}" method="POST">{% csrf_token %}
+                                <input type="hidden" id="revId" name="revId" value="{{user_review.id}}"/>
+                                <input type="submit" class="resAddBtn btn btn-danger" value="리뷰삭제">
+                            </form>
+                    {% else %}
+                        <div class="review">
+                                <a href="{% url 'reviews:revCreate' restaurant.id %}"><input type="submit" class="resAddBtn btn" value="리뷰작성"></a>
+                        </div>
+                    {% endif %}
+                {% endif %}
+                <br>
+                <hr>
+                {% for review in reviews %}
+                    <h3>{{review.created_by}}</h3>
+                    <span>Rate: {{review.rate}}</span>
+                    <span>PostedDay: {{review.postedDay}}</span>
+                    <h4>{{review.review}}</h4>
+                {% endfor %}
+            </div>
         </div>
 {% endblock content %}
