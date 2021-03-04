@@ -26,7 +26,7 @@ SECRET_KEY = '+zdh-xcw2da47hcv@u^02seb!m9h^ps1yq!k4h-eos-ha5d%zu'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['ResShare.eba-qatwppa3.ap-northeast-2.elasticbeanstalk.com']
 
 # Email settings
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
