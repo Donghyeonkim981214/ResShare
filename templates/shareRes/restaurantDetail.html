@@ -68,11 +68,10 @@
                         <h4>{{user_review.review}}</h4>
                         <div>
                             <form action="{% url 'reviews:revUpdate' user_review.id %}" method="GET">
-                                <input type="hidden" id="revId" name="revId" value="{{user_review.id}}"/>
                                 <input type="submit" class="resAddBtn btn btn-success" value="리뷰수정">
                             </form>
-                            <form action="{% url 'reviews:revDelete' restaurant.id %}" method="POST">{% csrf_token %}
-                                <input type="hidden" id="revId" name="revId" value="{{user_review.id}}"/>
+                            <form action="{% url 'reviews:revDelete' user_review.id %}" method="POST">{% csrf_token %}
+                                <input type="hidden" id="resId" name="resId" value="{{restaurant.id}}"/>
                                 <input type="submit" class="resAddBtn btn btn-danger" value="리뷰삭제">
                             </form>
                     {% else %}

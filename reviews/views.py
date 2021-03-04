@@ -6,9 +6,10 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import CreateView, DeleteView, UpdateView
 from . import models as Rev_models
 from django.shortcuts import get_object_or_404
+from . import mixins
 
 # Create your views here.
-class reviewCreateView(LoginRequiredMixin, CreateView):
+class reviewCreateView(LoginRequiredMixin, mixins.OnlyOneReview, CreateView):
     template_name = "review/reviewCreate.html"
     form_class = forms.ReviewForm
     model = Rev_models.Review
@@ -27,18 +28,18 @@ class reviewCreateView(LoginRequiredMixin, CreateView):
         return context
     
 
-class reviewDeleteView(DeleteView):
+class reviewDeleteView(LoginRequiredMixin, mixins.CreatorOnlyView, DeleteView):
     model = Rev_models.Review
 
     def get_object(self, queryset=None):
-      id = self.request.POST['revId']
-      return self.get_queryset().filter(pk=id).get()
+        review = get_object_or_404(Rev_models.Review, pk=self.kwargs['pk']) #4
+        return review
     
     def get_success_url(self):
-        return reverse("shareRes:resDetailPage", kwargs={"res_id": self.kwargs['pk']})
+        return reverse("shareRes:resDetailPage", kwargs={"res_id": self.request.POST['resId']})
 
 
-class reviewUpdateView(UpdateView):
+class reviewUpdateView(LoginRequiredMixin, mixins.CreatorOnlyView, UpdateView):
     model = Rev_models.Review
     form_class = forms.ReviewForm
     template_name = "review/reviewUpdate.html"
