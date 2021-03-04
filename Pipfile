@@ -7,6 +7,7 @@ name = "pypi"
 django = "*"
 django-dotenv = "*"
 awsebcli = "*"
+pipenv-to-requirements = "*"
 
 [dev-packages]
 
