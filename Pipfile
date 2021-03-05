@@ -6,10 +6,8 @@ name = "pypi"
 [packages]
 django = "*"
 django-dotenv = "*"
-awsebcli = "*"
-pipenv-to-requirements = "*"
 
 [dev-packages]
 
 [requires]
-python_version = "3.9"
+python_version = "3.6"
