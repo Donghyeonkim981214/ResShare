@@ -20,7 +20,8 @@
 ## 1. 프로젝트 소개
 * Restaurant-Share
   본 프로젝트는 'Django 한그릇 뚝딱'(문범우 지음, 비제이리퍼블릭)의 chapter 3_ 맛집 공유 사이트 만들기 내용을 베이스로 하여 해당 프로젝트를 수정 및 확장한 프로젝트입니다.
-  사용자는 음식점을 추가할 수 있고 리뷰와 평점을 공유할 수 있습니다. 또 음식점 리스트를 체크하여 자신의 맛집 리스트를 메일로 보내 공유할 수 있습니다.
+  사용자는 음식점을 추가할 수 있고 리뷰와 평점을 공유할 수 있습니다. 또 음식점 리스트를 체크하여 자신의 맛집 리스트를 메일로 보내 공유할 수 있습니다.   
+  Web url: http://donghyeon.pythonanywhere.com/
 * 개발환경
   * os: windows10
   * editor: visual studio code
@@ -28,6 +29,7 @@
   * backend: django(3.1.7)
   * database: sqlite3
   * frontend: html, css
+  * deploy: pythonanywhere
 
 ## 2. 기능 소개
   * 기본기능
