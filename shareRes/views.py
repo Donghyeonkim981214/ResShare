@@ -136,8 +136,10 @@ class restaurantUpdateView(LoginRequiredMixin, UpdateView):
 class restaurantDeleteView(LoginRequiredMixin, DeleteView):
     model = Restaurant
     success_url = reverse_lazy('shareRes:index')
-    slug_url_kwarg = "res_id"
-    slug_field = "id"
+    
+    def get_object(self, queryset=None):
+      resId = self.request.POST['resId']
+      return self.get_queryset().filter(pk=resId).get()
 
 
 """ def categoryCreate(request):
