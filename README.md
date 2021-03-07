@@ -42,10 +42,8 @@
 
 ## 3. 개발 완료
 * 수정   
-  1.FBV -> CBV   
-    'Django 한그릇 뚝딱에서는 모든 view가 Function bsed view로 설계되었다. 이를 Class based view로 전환하면서 Django에서 제공하는 다양한 generic view를 연습하였다.
-  2.template   
-    'Django 한그릇 뚝딱에서는 필요한 template파일이 개별적으로 설계되었다. 이를 template상속을 통해 base.html을 바탕으로 template파일을 효율적으로 설계 및 확장할 수 있도록 하였다.
+  1. FBV -> CBV: 'Django 한그릇 뚝딱에서는 모든 view가 Function bsed view로 설계되었다. 이를 Class based view로 전환하면서 Django에서 제공하는 다양한 generic view를 연습하였다.
+  2. template: 'Django 한그릇 뚝딱에서는 필요한 template파일이 개별적으로 설계되었다. 이를 template상속을 통해 base.html을 바탕으로 template파일을 효율적으로 설계 및 확장할 수 있도록 하였다.
 * 추가   
   1. users app을 추가하여 사용자의 회원가입, 로그인 등의 기능을 추가하였다. 또 로그인한 사용자만이 음식점을 추가하고 리뷰할 수 있는 등 비로그인 사용자와의 사용가능한 기능의 범위를 다르게 설정하였다.   
   2. reviews app을 추가하여 로그인한 사용자가 음식점에 관한 평가와 평점을 작성할 수 있도록 추가하였다. 또 음식점 상세설명에서 사용자들이 남긴 review들을 볼 수 있게 했으며, 평점의 평균도 같이 나타내 주었다.   
